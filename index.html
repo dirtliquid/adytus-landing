@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adytus.ai — Private Sovereign AI for Your Team</title>
+<meta name="description" content="Your employees are using ChatGPT with company secrets. Adytus gives your team a private, encrypted AI workspace — zero data leaks, zero training on your data."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#ffffff;--surface:#f5f7fc;--surface2:#eaeffa;
+  --border:rgba(10,14,26,0.1);--border2:rgba(10,14,26,0.16);
+  --text:#0a0e1a;--muted:#56607a;--dim:#b0bbcc;
+  --red:#c0392b;--red-dim:rgba(192,57,43,0.08);--red-border:rgba(192,57,43,0.28);
+  --green-dim:rgba(26,122,74,0.1);--green-border:rgba(26,122,74,0.28);
+  --gold:#1a4bdb;--gold-dim:rgba(26,75,219,0.08);--gold-border:rgba(26,75,219,0.22);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.logo{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:var(--text);text-decoration:none;}
+.logo em{font-style:normal;color:var(--gold);}
+nav ul{display:flex;gap:28px;list-style:none;}
+nav ul a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+nav ul a:hover{color:var(--text);}
+.nav-cta{
+  background:var(--gold);color:#ffffff;border:none;cursor:pointer;
+  font-family:'Geist',sans-serif;font-size:13px;font-weight:600;
+  padding:9px 20px;border-radius:6px;transition:opacity 0.2s;
+  text-decoration:none;display:inline-block;
+}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{
+  padding:88px 48px 72px;
+  max-width:900px;margin:0 auto;text-align:center;
+}
+.incident-label{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red-dim);border:1px solid var(--red-border);
+  border-radius:4px;padding:6px 14px;
+  font-size:11px;letter-spacing:2px;color:#e05a4e;
+  text-transform:uppercase;font-weight:500;margin-bottom:36px;
+}
+.blink{width:6px;height:6px;border-radius:50%;background:#e05a4e;animation:blink 1.4s ease-in-out infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+
+h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(40px,7vw,80px);
+  line-height:1.02;letter-spacing:-2px;
+  color:var(--text);margin-bottom:28px;
+}
+.strike{
+  text-decoration:line-through;
+  text-decoration-color:#c0392b;
+  text-decoration-thickness:4px;
+  color:var(--muted);
+}
+.hero-sub{
+  font-size:18px;color:var(--muted);
+  max-width:560px;margin:0 auto 44px;
+  line-height:1.75;font-weight:300;
+}
+.hero-sub strong{color:var(--text);font-weight:500;}
+
+.hero-cta-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:14px;margin-bottom:56px;flex-wrap:wrap;
+}
+.btn-primary{
+  background:var(--gold);color:#ffffff;border:none;cursor:pointer;
+  font-family:'Geist',sans-serif;font-size:16px;font-weight:700;
+  padding:16px 40px;border-radius:8px;
+  transition:opacity 0.2s;letter-spacing:-0.2px;
+  text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{opacity:0.85;}
+.btn-ghost{
+  background:transparent;color:var(--muted);
+  border:1px solid var(--border2);
+  font-family:'Geist',sans-serif;font-size:13px;font-weight:400;
+  padding:16px 24px;border-radius:8px;
+  transition:color 0.2s,border-color 0.2s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.btn-ghost:hover{color:var(--text);border-color:var(--muted);}
+.btn-ghost svg{opacity:0.4;}
+
+/* CHAT MOCKUP */
+.chat-scene{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:12px;max-width:640px;margin:0 auto 40px;overflow:hidden;
+}
+.chat-topbar{
+  padding:12px 16px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.chat-topbar-icon{
+  width:28px;height:28px;border-radius:6px;background:#10a37f;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:white;font-weight:700;font-family:'Geist',sans-serif;
+}
+.chat-topbar-name{font-size:13px;font-weight:500;color:var(--text);}
+.chat-topbar-sub{font-size:11px;color:var(--muted);}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#c0392b;flex-shrink:0;}
+.status-label{font-size:11px;color:#e05a4e;font-family:'Geist Mono',monospace;}
+.chat-msg{padding:16px 20px;display:flex;flex-direction:column;gap:14px;}
+.bubble{display:flex;gap:10px;align-items:flex-start;}
+.bubble.user{flex-direction:row-reverse;}
+.avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;font-family:'Geist',sans-serif;}
+.avatar.u{background:#3a4060;color:#a0aacc;}
+.avatar.a{background:#10a37f;color:white;}
+.msg{max-width:80%;padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.6;}
+.bubble.user .msg{background:#1e2340;color:#c0c8e0;border-radius:10px 2px 10px 10px;}
+.bubble.ai .msg{background:var(--surface2);color:var(--text);border-radius:2px 10px 10px 10px;border:0.5px solid var(--border);}
+.leak-tags{display:flex;align-items:center;gap:5px;margin-top:6px;justify-content:flex-end;flex-wrap:wrap;}
+.leak-tag{display:inline-block;background:rgba(192,57,43,0.15);border:1px solid var(--red-border);color:#e05a4e;border-radius:3px;font-size:10px;padding:1px 6px;font-family:'Geist Mono',monospace;}
+.warning-banner{
+  background:var(--red-dim);border:1px solid var(--red-border);
+  border-radius:6px;padding:10px 14px;
+  font-size:12px;color:#e05a4e;
+  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
+}
+
+/* DISCLAIMER */
+.disclaimer{
+  text-align:center;padding:0 48px;margin-bottom:88px;
+}
+.disclaimer p{font-size:13px;color:var(--muted);font-family:'Geist Mono',monospace;}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:10px;
+  margin:0 48px 88px;overflow:hidden;
+}
+.stat{background:var(--surface);padding:36px 32px;}
+.stat-num{
+  font-family:'Instrument Serif',serif;
+  font-size:48px;color:var(--text);line-height:1;margin-bottom:10px;
+}
+.stat-num em{font-style:normal;color:var(--gold);}
+.stat-label{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* SECTIONS */
+.section{padding:0 48px 88px;}
+.section-label{
+  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin-bottom:44px;
+  display:flex;align-items:center;gap:14px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* VS */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:start;max-width:860px;}
+.vs-col h3{font-size:14px;font-weight:500;margin-bottom:18px;}
+.vs-col.bad h3{color:#e05a4e;}
+.vs-col.good h3{color:#2ea86a;}
+.vs-arrow{display:flex;align-items:center;justify-content:center;padding-top:44px;color:var(--dim);font-size:24px;}
+.vs-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px;font-size:13px;color:var(--muted);line-height:1.55;}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.dot.r{background:#c0392b;}
+.dot.g{background:#2ea86a;}
+
+/* HOW IT WORKS */
+.hiw-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;margin-bottom:24px;
+}
+.hiw-step{background:var(--surface);padding:32px 26px;transition:background 0.2s;}
+.hiw-step:hover{background:var(--surface2);}
+.step-num{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:16px;display:block;}
+.hiw-step h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px;}
+.hiw-step p{font-size:12px;color:var(--muted);line-height:1.65;}
+.docs-link{
+  display:inline-flex;align-items:center;gap:12px;
+  border:1px solid var(--border2);border-radius:8px;
+  padding:14px 20px;text-decoration:none;
+  transition:color 0.2s,border-color 0.2s,background 0.2s;
+}
+.docs-link:hover{border-color:var(--gold);background:var(--gold-dim);}
+.docs-link .doc-icon{width:32px;height:32px;border-radius:6px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.doc-title{font-size:13px;font-weight:500;color:var(--text);display:block;}
+.doc-sub{font-size:11px;color:var(--muted);display:block;font-family:'Geist Mono',monospace;}
+
+/* PILLARS */
+.pillars{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:10px;
+  margin:0 48px 88px;overflow:hidden;
+}
+.pillar{background:var(--surface);padding:32px 26px;position:relative;transition:background 0.2s;}
+.pillar:hover{background:var(--surface2);}
+.pillar-bar{position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.35s ease;}
+.pillar:hover .pillar-bar{width:100%;}
+.pillar-num{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);margin-bottom:16px;display:block;}
+.pillar h3{font-size:14px;font-weight:500;margin-bottom:10px;color:var(--text);}
+.pillar p{font-size:12px;color:var(--muted);line-height:1.65;}
+
+/* FINAL CTA */
+.final-cta{
+  text-align:center;padding:88px 48px;
+  border-top:1px solid var(--border);
+}
+.final-cta h2{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(32px,5vw,60px);
+  letter-spacing:-1.5px;margin-bottom:16px;
+}
+.final-cta h2 em{font-style:italic;color:var(--gold);}
+.final-cta p{font-size:15px;color:var(--muted);margin-bottom:40px;font-weight:300;}
+.final-cta p strong{color:var(--text);font-weight:500;}
+.cta-row{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{
+  background:#0a0e1a;border-top:1px solid rgba(255,255,255,0.08);
+  padding:24px 48px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+footer p{font-size:12px;color:rgba(255,255,255,0.38);font-family:'Geist Mono',monospace;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:rgba(255,255,255,0.7);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.fadein{opacity:0;animation:fadeUp 0.6s ease forwards;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  nav ul{display:none;}
+  .hero{padding:60px 24px 48px;}
+  .stats{grid-template-columns:1fr;margin:0 24px 64px;}
+  .section{padding:0 24px 64px;}
+  .vs-grid{grid-template-columns:1fr;gap:32px;}
+  .vs-arrow{display:none;}
+  .hiw-grid{grid-template-columns:repeat(2,1fr);}
+  .pillars{grid-template-columns:repeat(2,1fr);margin:0 24px 64px;}
+  .final-cta{padding:64px 24px;}
+  footer{padding:20px 24px;}
+  .disclaimer{padding:0 24px;}
+}
+@media(max-width:560px){
+  .hiw-grid{grid-template-columns:1fr;}
+  .pillars{grid-template-columns:1fr;}
+  h1{letter-spacing:-1px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">adytus<em>.</em>ai</a>
+  <ul>
+    <li><a href="#problem">The problem</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#guarantees">Guarantees</a></li>
+  </ul>
+  <a class="nav-cta" href="waitlist.html">Join waitlist</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="incident-label fadein" style="animation-delay:0.05s;">
+    <span class="blink"></span>
+    Incident report — happening right now
+  </div>
+  <h1 class="fadein" style="animation-delay:0.15s;">
+    Your team is using<br>
+    <span class="strike">ChatGPT</span> with<br>
+    company secrets.
+  </h1>
+  <p class="hero-sub fadein" style="animation-delay:0.25s;">
+    Right now, your employees are pasting <strong>client data, source code, internal reports, and financial docs</strong> into AI tools you don't control — and have no visibility into. Adytus fixes that.
+  </p>
+  <div class="hero-cta-row fadein" style="animation-delay:0.35s;">
+    <a class="btn-primary" href="waitlist.html">Try now →</a>
+    <a class="btn-ghost" href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" rel="noopener">
+      See how it works
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- CHAT MOCKUP -->
+<div style="padding:0 48px;" class="fadein" style="animation-delay:0.45s;">
+<div class="chat-scene" id="problem">
+  <div class="chat-topbar">
+    <div class="chat-topbar-icon">G</div>
+    <div>
+      <div class="chat-topbar-name">ChatGPT</div>
+      <div class="chat-topbar-sub">openai.com — external server</div>
+    </div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;">
+      <span class="status-dot"></span>
+      <span class="status-label">data leaving your org</span>
+    </div>
+  </div>
+  <div class="chat-msg">
+    <div class="bubble user">
+      <div class="avatar u">S</div>
+      <div>
+        <div class="msg">
+          Here's our Q3 client list with revenue figures. Can you summarize performance by region and flag any at-risk accounts?<br><br>
+          <span style="font-family:'Geist Mono',monospace;font-size:11px;color:#a0aacc;">[Acme Corp — $2.4M — at risk]<br>[Globex Ltd — $890K — stable]<br>[Initech — $3.1M — churning]...</span>
+        </div>
+        <div class="leak-tags">
+          <span class="leak-tag">CRM DATA</span>
+          <span class="leak-tag">CLIENT NAMES</span>
+          <span class="leak-tag">REVENUE</span>
+        </div>
+      </div>
+    </div>
+    <div class="bubble ai">
+      <div class="avatar a">G</div>
+      <div class="msg">
+        Sure! Based on the data you've shared, here's a regional breakdown...<br><br>
+        <span style="font-size:11px;color:var(--muted);">✓ Response helpful &nbsp;·&nbsp; ✗ Your data now on OpenAI servers</span>
+      </div>
+    </div>
+    <div class="warning-banner">
+      <span style="font-size:15px;flex-shrink:0;margin-top:1px;">⚠</span>
+      <span>This conversation — including all client names and revenue data — may be used to train future OpenAI models. It is logged on external servers your IT team cannot audit or delete.</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="disclaimer">
+  <p>This isn't hypothetical. Samsung, JPMorgan, Amazon, and dozens of others have banned ChatGPT after exactly this.</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num"><em>68</em>%</div>
+    <div class="stat-label">of employees use personal AI tools for work tasks — without IT approval</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><em>1</em> in 3</div>
+    <div class="stat-label">have uploaded confidential files, code, or customer data to ChatGPT</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><em>0</em></div>
+    <div class="stat-label">visibility your security team has into what was shared or where it went</div>
+  </div>
+</div>
+
+<!-- VS SECTION -->
+<section class="section">
+  <div class="section-label">The problem vs the fix</div>
+  <div class="vs-grid">
+    <div class="vs-col bad">
+      <h3>Without Adytus</h3>
+      <div class="vs-item"><span class="dot r"></span>Employees use ChatGPT, Gemini, Claude on personal accounts</div>
+      <div class="vs-item"><span class="dot r"></span>Client data, HR files, source code uploaded with no oversight</div>
+      <div class="vs-item"><span class="dot r"></span>Data stored on external servers, potentially used for training</div>
+      <div class="vs-item"><span class="dot r"></span>No audit trail — you find out only after the breach</div>
+      <div class="vs-item"><span class="dot r"></span>Compliance violations you didn't know were happening</div>
+    </div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-col good">
+      <h3>With Adytus</h3>
+      <div class="vs-item"><span class="dot g"></span>One private AI workspace your whole company uses</div>
+      <div class="vs-item"><span class="dot g"></span>Every prompt encrypted before leaving the device</div>
+      <div class="vs-item"><span class="dot g"></span>Runs on private Hugging Face infrastructure — not shared pools</div>
+      <div class="vs-item"><span class="dot g"></span>Zero data retention — not even Adytus admins can see history</div>
+      <div class="vs-item"><span class="dot g"></span>Your data never trains any model, ever</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-label">How it works</div>
+  <div class="hiw-grid">
+    <div class="hiw-step">
+      <span class="step-num">STEP 01</span>
+      <h3>Admin deploys in minutes</h3>
+      <p>Self-host with Docker Compose on your own server or VM. One command gets you running — full control over your infrastructure.</p>
+    </div>
+    <div class="hiw-step">
+      <span class="step-num">STEP 02</span>
+      <h3>Connect your LLM</h3>
+      <p>Plug in your OpenAI, OpenRouter, or private Hugging Face API key via the Admin UI. Your key, your model, your rules.</p>
+    </div>
+    <div class="hiw-step">
+      <span class="step-num">STEP 03</span>
+      <h3>Invite your team</h3>
+      <p>Employees get a familiar chat interface — just like ChatGPT — but every message is encrypted and stays inside your org.</p>
+    </div>
+    <div class="hiw-step">
+      <span class="step-num">STEP 04</span>
+      <h3>Zero data leaves</h3>
+      <p>No conversation history stored externally. No training on your data. Not even Adytus can read what your team writes.</p>
+    </div>
+  </div>
+  <a class="docs-link" href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" rel="noopener">
+    <div class="doc-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="2" width="10" height="12" rx="1.5" stroke="#1a4bdb" stroke-width="1.2"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3" stroke="#1a4bdb" stroke-width="1" stroke-linecap="round"/></svg>
+    </div>
+    <div>
+      <span class="doc-title">Read the full setup guide →</span>
+      <span class="doc-sub">Installation · Encryption · Admin setup · User guide</span>
+    </div>
+  </a>
+</section>
+
+<!-- GUARANTEES -->
+<div class="pillars" id="guarantees">
+  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">01 — ANONYMOUS</span><h3>Crypto payment option</h3><p>Pay with crypto — no credit card, no billing identity linked to your company's AI usage.</p></div>
+  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">02 — ISOLATED</span><h3>Private Hugging Face space</h3><p>Your models run in a dedicated private space, isolated from shared infrastructure and other tenants.</p></div>
+  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">03 — ENCRYPTED</span><h3>Encrypted prompt transmission</h3><p>Messages are encrypted client-side. The LLM receives encoded payloads — never readable plaintext.</p></div>
+  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">04 — ZERO-KNOWLEDGE</span><h3>Admin-blind architecture</h3><p>Conversation history is inaccessible to Adytus staff by design — not policy. Architecturally impossible.</p></div>
+  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">05 — SOVEREIGN</span><h3>No training on your data</h3><p>Your prompts and responses are never harvested, logged, or used to improve any model.</p></div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Stop the leak.<br>Give your team <em>safe</em> AI.</h2>
+  <p>Early access companies get <strong>90% off for their first year</strong> + a free security audit.</p>
+  <div class="cta-row">
+    <a class="btn-primary" href="waitlist.html">Join the waitlist →</a>
+    <a class="btn-ghost" href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" rel="noopener">
+      Read the docs
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 adytus.ai — sovereign ai for enterprise</p>
+  <div class="footer-links">
+    <a href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank">Docs</a>
+    <a href="#">Security</a>
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
