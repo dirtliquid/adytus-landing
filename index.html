@@ -3,458 +3,381 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Adytus.ai — Private Sovereign AI for Your Team</title>
-<meta name="description" content="Your employees are using ChatGPT with company secrets. Adytus gives your team a private, encrypted AI workspace — zero data leaks, zero training on your data."/>
+<title>Adytus — Use Any AI. Keep It Private.</title>
+<meta name="description" content="Adytus gives your team a private, encrypted AI workspace. Use ChatGPT, Claude, Gemini — without leaking company secrets."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#ffffff;--surface:#f4f4f4;--surface2:#e8e8e8;
-  --border:#e8e8e8;--border2:#d4d4d4;
-  --text:#0a0e1a;--muted:#6b6b6b;--dim:#c8c8c8;
-  --red:#c0392b;--red-dim:rgba(192,57,43,0.08);--red-border:rgba(192,57,43,0.28);
-  --green-dim:rgba(26,122,74,0.1);--green-border:rgba(26,122,74,0.28);
-  --gold:#111318;--gold-dim:rgba(17,19,24,0.06);--gold-border:rgba(17,19,24,0.18);
+  --bg:#FFFFFF;
+  --ink:#1C1C1C;
+  --gray:#6B6B6B;
+  --light-gray:#F5F5F5;
+  --border:#E0E0E0;
+  --black:#000000;
 }
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;line-height:1.6;overflow-x:hidden;}
+body{background:var(--bg);color:var(--ink);font-family:'Figtree',sans-serif;line-height:1.6;overflow-x:hidden;}
 
 /* NAV */
 nav{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 48px;background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  padding:16px 48px;background:var(--bg);
   border-bottom:1px solid var(--border);
   position:sticky;top:0;z-index:100;
 }
-.logo{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:var(--text);text-decoration:none;}
-.logo em{font-style:normal;color:var(--gold);}
-nav ul{display:flex;gap:28px;list-style:none;}
-nav ul a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-nav ul a:hover{color:var(--text);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:32px;height:32px;}
+.logo-text{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-0.3px;}
+nav ul{display:flex;gap:32px;list-style:none;}
+nav ul a{font-size:14px;color:var(--gray);text-decoration:none;transition:color 0.2s;font-weight:500;}
+nav ul a:hover{color:var(--ink);}
 .nav-cta{
-  background:var(--gold);color:#ffffff;border:none;cursor:pointer;
-  font-family:'Geist',sans-serif;font-size:13px;font-weight:600;
-  padding:9px 20px;border-radius:6px;transition:background 0.2s;
+  background:var(--ink);color:#fff;border:none;cursor:pointer;
+  font-family:'Figtree',sans-serif;font-size:14px;font-weight:600;
+  padding:10px 22px;border-radius:6px;transition:opacity 0.2s;
   text-decoration:none;display:inline-block;
 }
-.nav-cta:hover{background:#2c2c2c;}
+.nav-cta:hover{opacity:0.8;}
 
 /* HERO */
 .hero{
-  padding:88px 48px 72px;
-  max-width:900px;margin:0 auto;text-align:center;
+  padding:96px 48px 80px;
+  max-width:860px;margin:0 auto;text-align:center;
 }
-.incident-label{
+.hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
-  background:var(--red-dim);border:1px solid var(--red-border);
-  border-radius:4px;padding:6px 14px;
-  font-size:11px;letter-spacing:2px;color:#e05a4e;
-  text-transform:uppercase;font-weight:500;margin-bottom:36px;
+  background:var(--light-gray);border:1px solid var(--border);
+  color:var(--gray);font-size:13px;font-weight:600;letter-spacing:0.04em;
+  text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:32px;
 }
-.blink{width:6px;height:6px;border-radius:50%;background:#e05a4e;animation:blink 1.4s ease-in-out infinite;flex-shrink:0;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
-
 h1{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(40px,7vw,80px);
-  line-height:1.02;letter-spacing:-2px;
-  color:var(--text);margin-bottom:28px;
+  font-size:clamp(40px,6vw,68px);font-weight:700;line-height:1.1;
+  color:var(--ink);letter-spacing:-1.5px;margin-bottom:24px;
 }
-.strike{
-  text-decoration:line-through;
-  text-decoration-color:#c0392b;
-  text-decoration-thickness:4px;
-  color:var(--muted);
-}
+h1 em{font-style:italic;font-weight:300;color:var(--gray);}
 .hero-sub{
-  font-size:18px;color:var(--muted);
-  max-width:560px;margin:0 auto 44px;
-  line-height:1.75;font-weight:300;
+  font-size:18px;color:var(--gray);max-width:520px;margin:0 auto 40px;
+  font-weight:400;line-height:1.6;
 }
-.hero-sub strong{color:var(--text);font-weight:500;}
-
-.hero-cta-row{
-  display:flex;align-items:center;justify-content:center;
-  gap:14px;margin-bottom:56px;flex-wrap:wrap;
-}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .btn-primary{
-  background:var(--gold);color:#ffffff;border:none;cursor:pointer;
-  font-family:'Geist',sans-serif;font-size:16px;font-weight:700;
-  padding:16px 40px;border-radius:8px;
-  transition:background 0.2s;letter-spacing:-0.2px;
-  text-decoration:none;display:inline-block;
+  background:var(--ink);color:#fff;
+  font-family:'Figtree',sans-serif;font-size:15px;font-weight:600;
+  padding:14px 28px;border-radius:8px;text-decoration:none;
+  display:inline-block;transition:opacity 0.2s;border:none;cursor:pointer;
 }
-.btn-primary:hover{background:#2c2c2c;}
+.btn-primary:hover{opacity:0.8;}
 .btn-ghost{
-  background:transparent;color:var(--muted);
-  border:1px solid var(--border2);
-  font-family:'Geist',sans-serif;font-size:13px;font-weight:400;
-  padding:16px 24px;border-radius:8px;
-  transition:color 0.2s,border-color 0.2s;
-  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+  background:transparent;color:var(--ink);
+  font-family:'Figtree',sans-serif;font-size:15px;font-weight:500;
+  padding:14px 28px;border-radius:8px;text-decoration:none;
+  display:inline-block;border:1.5px solid var(--border);transition:border-color 0.2s;
 }
-.btn-ghost:hover{color:var(--text);border-color:var(--muted);}
-.btn-ghost svg{opacity:0.4;}
+.btn-ghost:hover{border-color:var(--gray);}
 
-/* CHAT MOCKUP */
-.chat-scene{
-  background:var(--surface);border:1px solid var(--border2);
-  border-radius:12px;max-width:640px;margin:0 auto 40px;overflow:hidden;
+/* AI LOGOS */
+.ai-logos{
+  text-align:center;padding:32px 48px 56px;border-top:1px solid var(--border);
 }
-.chat-topbar{
-  padding:12px 16px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:10px;
-}
-.chat-topbar-icon{
-  width:28px;height:28px;border-radius:6px;background:#10a37f;
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;color:white;font-weight:700;font-family:'Geist',sans-serif;
-}
-.chat-topbar-name{font-size:13px;font-weight:500;color:var(--text);}
-.chat-topbar-sub{font-size:11px;color:var(--muted);}
-.status-dot{width:6px;height:6px;border-radius:50%;background:#c0392b;flex-shrink:0;}
-.status-label{font-size:11px;color:#e05a4e;font-family:'Geist Mono',monospace;}
-.chat-msg{padding:16px 20px;display:flex;flex-direction:column;gap:14px;}
-.bubble{display:flex;gap:10px;align-items:flex-start;}
-.bubble.user{flex-direction:row-reverse;}
-.avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;font-family:'Geist',sans-serif;}
-.avatar.u{background:#2c2c2c;color:#999999;}
-.avatar.a{background:#10a37f;color:white;}
-.msg{max-width:80%;padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.6;}
-.bubble.user .msg{background:#1a1a1a;color:#cccccc;border-radius:10px 2px 10px 10px;}
-.bubble.ai .msg{background:var(--surface2);color:var(--text);border-radius:2px 10px 10px 10px;border:0.5px solid var(--border);}
-.leak-tags{display:flex;align-items:center;gap:5px;margin-top:6px;justify-content:flex-end;flex-wrap:wrap;}
-.leak-tag{display:inline-block;background:rgba(192,57,43,0.15);border:1px solid var(--red-border);color:#e05a4e;border-radius:3px;font-size:10px;padding:1px 6px;font-family:'Geist Mono',monospace;}
-.warning-banner{
-  background:var(--red-dim);border:1px solid var(--red-border);
-  border-radius:6px;padding:10px 14px;
-  font-size:12px;color:#e05a4e;
-  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
-}
+.ai-logos p{font-size:13px;color:var(--gray);margin-bottom:20px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;}
+.ai-logos-row{display:flex;gap:32px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.ai-logo-item{font-size:15px;font-weight:600;color:var(--gray);opacity:0.6;}
 
-/* DISCLAIMER */
-.disclaimer{
-  text-align:center;padding:0 48px;margin-bottom:88px;
-}
-.disclaimer p{font-size:13px;color:var(--muted);font-family:'Geist Mono',monospace;}
-
-/* STATS */
-.stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);border-radius:10px;
-  margin:0 48px 88px;overflow:hidden;
-}
-.stat{background:var(--surface);padding:36px 32px;}
-.stat-num{
-  font-family:'Instrument Serif',serif;
-  font-size:48px;color:var(--text);line-height:1;margin-bottom:10px;
-}
-.stat-num em{font-style:normal;color:var(--gold);}
-.stat-label{font-size:13px;color:var(--muted);line-height:1.6;}
-
-/* SECTIONS */
-.section{padding:0 48px 88px;}
+/* SECTION SHARED */
+section{padding:80px 48px;}
+.section-inner{max-width:960px;margin:0 auto;}
 .section-label{
-  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--muted);font-weight:500;margin-bottom:44px;
-  display:flex;align-items:center;gap:14px;
+  font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:16px;
 }
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-
-/* VS */
-.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:start;max-width:860px;}
-.vs-col h3{font-size:14px;font-weight:500;margin-bottom:18px;}
-.vs-col.bad h3{color:#e05a4e;}
-.vs-col.good h3{color:#2ea86a;}
-.vs-arrow{display:flex;align-items:center;justify-content:center;padding-top:44px;color:var(--dim);font-size:24px;}
-.vs-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px;font-size:13px;color:var(--muted);line-height:1.55;}
-.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
-.dot.r{background:#c0392b;}
-.dot.g{background:#2ea86a;}
+h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.8px;color:var(--ink);line-height:1.15;margin-bottom:16px;}
+.section-sub{font-size:17px;color:var(--gray);max-width:540px;line-height:1.6;}
 
 /* HOW IT WORKS */
-.hiw-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);border-radius:10px;
-  overflow:hidden;margin-bottom:24px;
+.how-section{background:var(--ink);color:#fff;}
+.how-section h2{color:#fff;}
+.how-section .section-label{color:rgba(255,255,255,0.45);}
+.how-section .section-sub{color:rgba(255,255,255,0.65);}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;margin-top:56px;}
+.step{display:flex;flex-direction:column;gap:16px;}
+.step-num{
+  width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:700;color:#fff;flex-shrink:0;
 }
-.hiw-step{background:var(--surface);padding:32px 26px;transition:background 0.2s;}
-.hiw-step:hover{background:var(--surface2);}
-.step-num{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:16px;display:block;}
-.hiw-step h3{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px;}
-.hiw-step p{font-size:12px;color:var(--muted);line-height:1.65;}
-.docs-link{
-  display:inline-flex;align-items:center;gap:12px;
-  border:1px solid var(--border2);border-radius:8px;
-  padding:14px 20px;text-decoration:none;
-  transition:color 0.2s,border-color 0.2s,background 0.2s;
-}
-.docs-link:hover{border-color:var(--gold);background:var(--gold-dim);}
-.docs-link .doc-icon{width:32px;height:32px;border-radius:6px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.doc-title{font-size:13px;font-weight:500;color:var(--text);display:block;}
-.doc-sub{font-size:11px;color:var(--muted);display:block;font-family:'Geist Mono',monospace;}
+.step h3{font-size:18px;font-weight:600;color:#fff;letter-spacing:-0.2px;}
+.step p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.6;}
 
-/* PILLARS */
-.pillars{
-  display:grid;grid-template-columns:repeat(5,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);border-radius:10px;
-  margin:0 48px 88px;overflow:hidden;
+/* COMPARISON */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.compare-card{
+  background:var(--light-gray);border:1px solid var(--border);
+  border-radius:12px;padding:32px;
 }
-.pillar{background:var(--surface);padding:32px 26px;position:relative;transition:background 0.2s;}
-.pillar:hover{background:var(--surface2);}
-.pillar-bar{position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.35s ease;}
-.pillar:hover .pillar-bar{width:100%;}
-.pillar-num{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);margin-bottom:16px;display:block;}
-.pillar h3{font-size:14px;font-weight:500;margin-bottom:10px;color:var(--text);}
-.pillar p{font-size:12px;color:var(--muted);line-height:1.65;}
+.compare-card.bad .compare-head{color:#999;}
+.compare-card.good .compare-head{color:var(--ink);}
+.compare-head{font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.compare-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.compare-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--gray);}
+.compare-list li::before{content:"✗";color:#bbb;font-weight:700;flex-shrink:0;margin-top:1px;}
+.compare-card.good .compare-list li::before{content:"✓";color:var(--ink);}
+
+/* PRIVATE BY DESIGN */
+.private-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:48px;}
+.private-card{
+  background:var(--light-gray);border:1px solid var(--border);
+  border-radius:12px;padding:28px;
+}
+.private-icon{
+  width:40px;height:40px;border-radius:8px;background:#E8E8E8;
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.private-card h3{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.private-card p{font-size:14px;color:var(--gray);line-height:1.55;}
+
+/* ETYMOLOGY */
+.etymology-section{background:var(--ink);color:#fff;}
+.etymology-section h2{color:#fff;}
+.etymology-section .section-label{color:rgba(255,255,255,0.45);}
+.etymology-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.etymology-text p{font-size:17px;color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:20px;}
+.etymology-word{
+  font-size:64px;font-weight:700;color:rgba(255,255,255,0.08);
+  letter-spacing:-2px;line-height:1;margin-bottom:16px;
+}
+.etymology-def{
+  font-size:15px;color:rgba(255,255,255,0.5);
+  border-left:2px solid rgba(255,255,255,0.15);padding-left:20px;
+  line-height:1.7;
+}
+.etymology-def strong{color:rgba(255,255,255,0.75);font-weight:600;}
 
 /* FINAL CTA */
-.final-cta{
-  text-align:center;padding:88px 48px;
-  border-top:1px solid var(--border);
-}
-.final-cta h2{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(32px,5vw,60px);
-  letter-spacing:-1.5px;margin-bottom:16px;
-}
-.final-cta h2 em{font-style:italic;color:var(--gold);}
-.final-cta p{font-size:15px;color:var(--muted);margin-bottom:40px;font-weight:300;}
-.final-cta p strong{color:var(--text);font-weight:500;}
-.cta-row{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+.cta-section{text-align:center;padding:96px 48px;background:var(--light-gray);}
+.cta-section h2{margin-bottom:16px;}
+.cta-section p{font-size:17px;color:var(--gray);margin-bottom:40px;}
 
 /* FOOTER */
 footer{
-  background:#0a0e1a;border-top:1px solid rgba(255,255,255,0.08);
-  padding:24px 48px;
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  border-top:1px solid var(--border);padding:32px 48px;
+  display:flex;align-items:center;justify-content:space-between;
 }
-footer p{font-size:12px;color:rgba(255,255,255,0.38);font-family:'Geist Mono',monospace;}
-.footer-links{display:flex;gap:24px;}
-.footer-links a{font-size:12px;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:rgba(255,255,255,0.7);}
+.footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.footer-logo span{font-size:15px;font-weight:600;color:var(--gray);}
+footer p{font-size:13px;color:var(--gray);}
+footer a{color:var(--gray);text-decoration:none;}
+footer a:hover{color:var(--ink);}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.fadein{opacity:0;animation:fadeUp 0.6s ease forwards;}
-
-/* RESPONSIVE */
-@media(max-width:900px){
+@media(max-width:768px){
   nav{padding:16px 24px;}
   nav ul{display:none;}
-  .hero{padding:60px 24px 48px;}
-  .stats{grid-template-columns:1fr;margin:0 24px 64px;}
-  .section{padding:0 24px 64px;}
-  .vs-grid{grid-template-columns:1fr;gap:32px;}
-  .vs-arrow{display:none;}
-  .hiw-grid{grid-template-columns:repeat(2,1fr);}
-  .pillars{grid-template-columns:repeat(2,1fr);margin:0 24px 64px;}
-  .final-cta{padding:64px 24px;}
-  footer{padding:20px 24px;}
-  .disclaimer{padding:0 24px;}
-}
-@media(max-width:560px){
-  .hiw-grid{grid-template-columns:1fr;}
-  .pillars{grid-template-columns:1fr;}
-  h1{letter-spacing:-1px;}
+  .hero{padding:64px 24px 56px;}
+  section{padding:64px 24px;}
+  .etymology-inner{grid-template-columns:1fr;}
+  .compare-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px;}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">adytus<em>.</em>ai</a>
+  <a href="/" class="logo">
+    <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="9.5" stroke="#1C1C1C" stroke-width="2"/>
+      <circle cx="16" cy="16" r="3.5" fill="#1C1C1C"/>
+      <circle cx="16"    cy="1.5"   r="1.2" fill="#1C1C1C"/>
+      <circle cx="23.25" cy="3.75"  r="1.2" fill="#1C1C1C"/>
+      <circle cx="28.25" cy="9"     r="1.2" fill="#1C1C1C"/>
+      <circle cx="30.5"  cy="16"    r="1.2" fill="#1C1C1C"/>
+      <circle cx="28.25" cy="23"    r="1.2" fill="#1C1C1C"/>
+      <circle cx="23.25" cy="28.25" r="1.2" fill="#1C1C1C"/>
+      <circle cx="16"    cy="30.5"  r="1.2" fill="#1C1C1C"/>
+      <circle cx="8.75"  cy="28.25" r="1.2" fill="#1C1C1C"/>
+      <circle cx="3.75"  cy="23"    r="1.2" fill="#1C1C1C"/>
+      <circle cx="1.5"   cy="16"    r="1.2" fill="#1C1C1C"/>
+      <circle cx="3.75"  cy="9"     r="1.2" fill="#1C1C1C"/>
+      <circle cx="8.75"  cy="3.75"  r="1.2" fill="#1C1C1C"/>
+    </svg>
+    <span class="logo-text">adytus</span>
+  </a>
   <ul>
-    <li><a href="#problem">The problem</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#guarantees">Guarantees</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#private">Private by design</a></li>
+    <li><a href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank">Guide</a></li>
   </ul>
-  <a class="nav-cta" href="waitlist.html">Join waitlist</a>
+  <a href="waitlist.html" class="nav-cta">Join Waitlist</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="incident-label fadein" style="animation-delay:0.05s;">
-    <span class="blink"></span>
-    Incident report — happening right now
-  </div>
-  <h1 class="fadein" style="animation-delay:0.15s;">
-    Your team is using<br>
-    <span class="strike">ChatGPT</span> with<br>
-    company secrets.
-  </h1>
-  <p class="hero-sub fadein" style="animation-delay:0.25s;">
-    Right now, your employees are pasting <strong>client data, source code, internal reports, and financial docs</strong> into AI tools you don't control — and have no visibility into. Adytus fixes that.
-  </p>
-  <div class="hero-cta-row fadein" style="animation-delay:0.35s;">
-    <a class="btn-primary" href="waitlist.html">Try now →</a>
-    <a class="btn-ghost" href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" rel="noopener">
-      See how it works
-      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- CHAT MOCKUP -->
-<div style="padding:0 48px;" class="fadein" style="animation-delay:0.45s;">
-<div class="chat-scene" id="problem">
-  <div class="chat-topbar">
-    <div class="chat-topbar-icon">G</div>
-    <div>
-      <div class="chat-topbar-name">ChatGPT</div>
-      <div class="chat-topbar-sub">openai.com — external server</div>
-    </div>
-    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;">
-      <span class="status-dot"></span>
-      <span class="status-label">data leaving your org</span>
-    </div>
-  </div>
-  <div class="chat-msg">
-    <div class="bubble user">
-      <div class="avatar u">S</div>
-      <div>
-        <div class="msg">
-          Here's our Q3 client list with revenue figures. Can you summarize performance by region and flag any at-risk accounts?<br><br>
-          <span style="font-family:'Geist Mono',monospace;font-size:11px;color:#a0aacc;">[Acme Corp — $2.4M — at risk]<br>[Globex Ltd — $890K — stable]<br>[Initech — $3.1M — churning]...</span>
-        </div>
-        <div class="leak-tags">
-          <span class="leak-tag">CRM DATA</span>
-          <span class="leak-tag">CLIENT NAMES</span>
-          <span class="leak-tag">REVENUE</span>
-        </div>
-      </div>
-    </div>
-    <div class="bubble ai">
-      <div class="avatar a">G</div>
-      <div class="msg">
-        Sure! Based on the data you've shared, here's a regional breakdown...<br><br>
-        <span style="font-size:11px;color:var(--muted);">✓ Response helpful &nbsp;·&nbsp; ✗ Your data now on OpenAI servers</span>
-      </div>
-    </div>
-    <div class="warning-banner">
-      <span style="font-size:15px;flex-shrink:0;margin-top:1px;">⚠</span>
-      <span>This conversation — including all client names and revenue data — may be used to train future OpenAI models. It is logged on external servers your IT team cannot audit or delete.</span>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="disclaimer">
-  <p>This isn't hypothetical. Samsung, JPMorgan, Amazon, and dozens of others have banned ChatGPT after exactly this.</p>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num"><em>68</em>%</div>
-    <div class="stat-label">of employees use personal AI tools for work tasks — without IT approval</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num"><em>1</em> in 3</div>
-    <div class="stat-label">have uploaded confidential files, code, or customer data to ChatGPT</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num"><em>0</em></div>
-    <div class="stat-label">visibility your security team has into what was shared or where it went</div>
+<div class="hero">
+  <div class="hero-eyebrow">Private AI for teams</div>
+  <h1>Use any AI.<br/><em>Keep it private.</em></h1>
+  <p class="hero-sub">Your employees are already using ChatGPT with company data. Adytus gives them a private AI workspace — encrypted, zero-retention, and admin-blind.</p>
+  <div class="hero-actions">
+    <a href="waitlist.html" class="btn-primary">Join Waitlist →</a>
+    <a href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" class="btn-ghost">See how it works</a>
   </div>
 </div>
 
-<!-- VS SECTION -->
-<section class="section">
-  <div class="section-label">The problem vs the fix</div>
-  <div class="vs-grid">
-    <div class="vs-col bad">
-      <h3>Without Adytus</h3>
-      <div class="vs-item"><span class="dot r"></span>Employees use ChatGPT, Gemini, Claude on personal accounts</div>
-      <div class="vs-item"><span class="dot r"></span>Client data, HR files, source code uploaded with no oversight</div>
-      <div class="vs-item"><span class="dot r"></span>Data stored on external servers, potentially used for training</div>
-      <div class="vs-item"><span class="dot r"></span>No audit trail — you find out only after the breach</div>
-      <div class="vs-item"><span class="dot r"></span>Compliance violations you didn't know were happening</div>
-    </div>
-    <div class="vs-arrow">→</div>
-    <div class="vs-col good">
-      <h3>With Adytus</h3>
-      <div class="vs-item"><span class="dot g"></span>One private AI workspace your whole company uses</div>
-      <div class="vs-item"><span class="dot g"></span>Every prompt encrypted before leaving the device</div>
-      <div class="vs-item"><span class="dot g"></span>Runs on private Hugging Face infrastructure — not shared pools</div>
-      <div class="vs-item"><span class="dot g"></span>Zero data retention — not even Adytus admins can see history</div>
-      <div class="vs-item"><span class="dot g"></span>Your data never trains any model, ever</div>
-    </div>
+<!-- AI LOGOS -->
+<div class="ai-logos">
+  <p>Works with the AI your team already uses</p>
+  <div class="ai-logos-row">
+    <span class="ai-logo-item">OpenAI</span>
+    <span class="ai-logo-item">Anthropic</span>
+    <span class="ai-logo-item">Google Gemini</span>
+    <span class="ai-logo-item">DeepSeek</span>
+    <span class="ai-logo-item">OpenRouter</span>
   </div>
-</section>
+</div>
 
 <!-- HOW IT WORKS -->
-<section class="section" id="how">
-  <div class="section-label">How it works</div>
-  <div class="hiw-grid">
-    <div class="hiw-step">
-      <span class="step-num">STEP 01</span>
-      <h3>Admin deploys in minutes</h3>
-      <p>Self-host with Docker Compose on your own server or VM. One command gets you running — full control over your infrastructure.</p>
-    </div>
-    <div class="hiw-step">
-      <span class="step-num">STEP 02</span>
-      <h3>Connect your LLM</h3>
-      <p>Plug in your OpenAI, OpenRouter, or private Hugging Face API key via the Admin UI. Your key, your model, your rules.</p>
-    </div>
-    <div class="hiw-step">
-      <span class="step-num">STEP 03</span>
-      <h3>Invite your team</h3>
-      <p>Employees get a familiar chat interface — just like ChatGPT — but every message is encrypted and stays inside your org.</p>
-    </div>
-    <div class="hiw-step">
-      <span class="step-num">STEP 04</span>
-      <h3>Zero data leaves</h3>
-      <p>No conversation history stored externally. No training on your data. Not even Adytus can read what your team writes.</p>
+<section class="how-section" id="how-it-works">
+  <div class="section-inner">
+    <p class="section-label">How it works</p>
+    <h2>Private by design,<br/>not by promise.</h2>
+    <p class="section-sub">Three layers make sure your company data never leaves your control — even we can't see it.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Your team connects their AI</h3>
+        <p>Each employee brings their own API key for ChatGPT, Claude, or Gemini. No shared credentials, no account pooling.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Prompts are encrypted before sending</h3>
+        <p>Every message is encrypted on the client before it reaches any server. Even Adytus infrastructure never sees plaintext prompts.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Zero retention, zero training</h3>
+        <p>No conversation history is stored. Your data is never used to train models. Admin access is architecturally impossible.</p>
+      </div>
     </div>
   </div>
-  <a class="docs-link" href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" rel="noopener">
-    <div class="doc-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="2" width="10" height="12" rx="1.5" stroke="#111318" stroke-width="1.2"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3" stroke="#111318" stroke-width="1" stroke-linecap="round"/></svg>
-    </div>
-    <div>
-      <span class="doc-title">Read the full setup guide →</span>
-      <span class="doc-sub">Installation · Encryption · Admin setup · User guide</span>
-    </div>
-  </a>
 </section>
 
-<!-- GUARANTEES -->
-<div class="pillars" id="guarantees">
-  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">01 — ANONYMOUS</span><h3>Crypto payment option</h3><p>Pay with crypto — no credit card, no billing identity linked to your company's AI usage.</p></div>
-  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">02 — ISOLATED</span><h3>Private Hugging Face space</h3><p>Your models run in a dedicated private space, isolated from shared infrastructure and other tenants.</p></div>
-  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">03 — ENCRYPTED</span><h3>Encrypted prompt transmission</h3><p>Messages are encrypted client-side. The LLM receives encoded payloads — never readable plaintext.</p></div>
-  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">04 — ZERO-KNOWLEDGE</span><h3>Admin-blind architecture</h3><p>Conversation history is inaccessible to Adytus staff by design — not policy. Architecturally impossible.</p></div>
-  <div class="pillar"><div class="pillar-bar"></div><span class="pillar-num">05 — SOVEREIGN</span><h3>No training on your data</h3><p>Your prompts and responses are never harvested, logged, or used to improve any model.</p></div>
-</div>
+<!-- COMPARISON -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">The problem</p>
+    <h2>ChatGPT was built<br/>for consumers, not companies.</h2>
+    <p class="section-sub">When employees use personal AI accounts for work, your company data becomes training data.</p>
+    <div class="compare-grid">
+      <div class="compare-card bad">
+        <p class="compare-head">Without Adytus</p>
+        <ul class="compare-list">
+          <li>Client lists uploaded to ChatGPT</li>
+          <li>Source code pasted into prompts</li>
+          <li>Financial docs sent to OpenAI servers</li>
+          <li>Data used to train future models</li>
+          <li>No visibility into what was shared</li>
+        </ul>
+      </div>
+      <div class="compare-card good">
+        <p class="compare-head">With Adytus</p>
+        <ul class="compare-list">
+          <li>All prompts encrypted end-to-end</li>
+          <li>Admins cannot read employee chats</li>
+          <li>Zero data retention on our servers</li>
+          <li>Your data never trains any model</li>
+          <li>Full audit log of AI usage (metadata only)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE BY DESIGN -->
+<section id="private">
+  <div class="section-inner">
+    <p class="section-label">Privacy architecture</p>
+    <h2>Five guarantees.<br/>Not five promises.</h2>
+    <p class="section-sub">These are architectural constraints — not policies that can be changed with a config flag.</p>
+    <div class="private-grid">
+      <div class="private-card">
+        <div class="private-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 2L3 5.5V10c0 4 3.1 7.7 7 8.9 3.9-1.2 7-4.9 7-8.9V5.5L10 2z" stroke="#1C1C1C" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Client-side encryption</h3>
+        <p>Prompts are encrypted in the browser before any network request. The server receives ciphertext only.</p>
+      </div>
+      <div class="private-card">
+        <div class="private-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="#1C1C1C" stroke-width="1.5"/><path d="M10 6v4l3 3" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Zero retention</h3>
+        <p>No conversations are stored on our servers. When the session ends, the data is gone.</p>
+      </div>
+      <div class="private-card">
+        <div class="private-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 2a5 5 0 00-5 5v1H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V9a1 1 0 00-1-1h-1V7a5 5 0 00-5-5z" stroke="#1C1C1C" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Admin-blind</h3>
+        <p>Company admins can see usage metadata but never conversation content. It's architecturally impossible.</p>
+      </div>
+      <div class="private-card">
+        <div class="private-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="2" width="16" height="16" rx="3" stroke="#1C1C1C" stroke-width="1.5"/><path d="M7 10h6M10 7v6" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Private infrastructure</h3>
+        <p>Hosted on HuggingFace private spaces. Not shared multi-tenant infrastructure.</p>
+      </div>
+      <div class="private-card">
+        <div class="private-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M3 10a7 7 0 1014 0A7 7 0 003 10z" stroke="#1C1C1C" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Anonymous payment</h3>
+        <p>Pay with crypto. No identity required. Your organization's relationship with Adytus stays private.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ETYMOLOGY -->
+<section class="etymology-section">
+  <div class="section-inner">
+    <p class="section-label">Why the name</p>
+    <div class="etymology-inner">
+      <div class="etymology-text">
+        <h2>The most sacred<br/>room in the temple.</h2>
+        <p>In ancient Greek architecture, the <em>adyton</em> was the innermost sanctuary — a room so private that only the most trusted priests were permitted to enter.</p>
+        <p>We chose this name because that's what we're building: a private space where your company's most sensitive thinking can happen freely, without fear of exposure.</p>
+      </div>
+      <div>
+        <div class="etymology-word">adyton</div>
+        <div class="etymology-def">
+          <strong>Ancient Greek</strong> · ἄδυτον<br/>
+          <em>a-dytos</em> — "not to be entered"<br/><br/>
+          The inner sanctuary of a Greek temple, inaccessible to the public. Reserved for the sacred. Private by design.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FINAL CTA -->
-<section class="final-cta">
-  <h2>Stop the leak.<br>Give your team <em>safe</em> AI.</h2>
-  <p>Early access companies get <strong>90% off for their first year</strong> + a free security audit.</p>
-  <div class="cta-row">
-    <a class="btn-primary" href="waitlist.html">Join the waitlist →</a>
-    <a class="btn-ghost" href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank" rel="noopener">
-      Read the docs
-      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+<section class="cta-section">
+  <div class="section-inner">
+    <h2>Your team is already using AI.<br/>Make sure it's private.</h2>
+    <p>Join the waitlist. Get 90% off your first year.</p>
+    <a href="waitlist.html" class="btn-primary" style="font-size:16px;padding:16px 36px;">Join Waitlist →</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>© 2025 adytus.ai — sovereign ai for enterprise</p>
-  <div class="footer-links">
-    <a href="https://boxedai.vercel.app/guide/getting-started.html" target="_blank">Docs</a>
-    <a href="#">Security</a>
-    <a href="#">Privacy</a>
-    <a href="#">Contact</a>
-  </div>
+  <a href="/" class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="9.5" stroke="#6B6B6B" stroke-width="2"/><circle cx="16" cy="16" r="3.5" fill="#6B6B6B"/><circle cx="16" cy="1.5" r="1.2" fill="#6B6B6B"/><circle cx="23.25" cy="3.75" r="1.2" fill="#6B6B6B"/><circle cx="28.25" cy="9" r="1.2" fill="#6B6B6B"/><circle cx="30.5" cy="16" r="1.2" fill="#6B6B6B"/><circle cx="28.25" cy="23" r="1.2" fill="#6B6B6B"/><circle cx="23.25" cy="28.25" r="1.2" fill="#6B6B6B"/><circle cx="16" cy="30.5" r="1.2" fill="#6B6B6B"/><circle cx="8.75" cy="28.25" r="1.2" fill="#6B6B6B"/><circle cx="3.75" cy="23" r="1.2" fill="#6B6B6B"/><circle cx="1.5" cy="16" r="1.2" fill="#6B6B6B"/><circle cx="3.75" cy="9" r="1.2" fill="#6B6B6B"/><circle cx="8.75" cy="3.75" r="1.2" fill="#6B6B6B"/></svg>
+    <span>adytus</span>
+  </a>
+  <p>© 2026 Adytus. Private AI for companies.</p>
+  <p><a href="waitlist.html">Join Waitlist</a></p>
 </footer>
 
 </body>
