@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Documentation — adytus</title>
+<meta name="description" content="adytus documentation. Private, encrypted AI workspace — setup, API keys, encryption, file uploads, and more."/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FFFFFF;--ink:#1C1C1C;--gray:#6B6B6B;
+  --light:#F5F5F5;--border:#E0E0E0;
+  --code-bg:#F0F0F0;--sidebar-w:260px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Figtree',sans-serif;line-height:1.6;}
+
+/* ── TOP NAV ── */
+.topnav{
+  position:fixed;top:0;left:0;right:0;height:56px;z-index:200;
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 24px;gap:16px;
+}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0;}
+.logo span{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.3px;}
+.nav-badge{
+  font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  background:var(--light);border:1px solid var(--border);color:var(--gray);
+  padding:3px 10px;border-radius:100px;
+}
+.topnav-right{margin-left:auto;display:flex;align-items:center;gap:16px;}
+.topnav-right a{font-size:13px;color:var(--gray);text-decoration:none;font-weight:500;}
+.topnav-right a:hover{color:var(--ink);}
+.topnav-cta{
+  background:var(--ink);color:#fff;padding:8px 18px;border-radius:6px;
+  font-size:13px;font-weight:600;text-decoration:none;
+}
+.topnav-cta:hover{opacity:0.8;}
+
+/* ── LAYOUT ── */
+.layout{display:flex;padding-top:56px;min-height:100vh;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  position:fixed;top:56px;left:0;bottom:0;
+  overflow-y:auto;border-right:1px solid var(--border);
+  padding:28px 0 40px;background:var(--bg);
+}
+.sidebar-section{margin-bottom:28px;}
+.sidebar-heading{
+  font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gray);padding:0 20px;margin-bottom:8px;
+}
+.sidebar a{
+  display:block;padding:7px 20px;font-size:14px;color:var(--gray);
+  text-decoration:none;font-weight:500;transition:color 0.15s;
+  border-left:2px solid transparent;
+}
+.sidebar a:hover{color:var(--ink);}
+.sidebar a.active{color:var(--ink);border-left-color:var(--ink);background:var(--light);}
+
+/* ── CONTENT ── */
+.content{
+  margin-left:var(--sidebar-w);flex:1;
+  max-width:760px;padding:48px 56px 96px;
+}
+
+/* ── PROSE ── */
+.content h1{font-size:32px;font-weight:700;letter-spacing:-0.6px;margin-bottom:12px;line-height:1.2;}
+.content h2{font-size:22px;font-weight:700;letter-spacing:-0.3px;margin:40px 0 12px;padding-top:40px;border-top:1px solid var(--border);}
+.content h2:first-of-type{border-top:none;padding-top:0;margin-top:28px;}
+.content h3{font-size:17px;font-weight:700;margin:28px 0 8px;}
+.content p{font-size:15px;color:var(--ink);line-height:1.75;margin-bottom:14px;}
+.content ul,.content ol{padding-left:20px;margin-bottom:14px;}
+.content li{font-size:15px;line-height:1.75;margin-bottom:5px;}
+.content a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+.content a:hover{opacity:0.7;}
+.content strong{font-weight:700;}
+.content code{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  background:var(--code-bg);padding:2px 6px;border-radius:4px;color:var(--ink);
+}
+.content pre{
+  background:var(--ink);border-radius:10px;padding:20px 24px;
+  margin:18px 0;overflow-x:auto;
+}
+.content pre code{
+  background:transparent;color:#e8e8e8;font-size:13px;padding:0;line-height:1.7;
+}
+.content blockquote{
+  border-left:3px solid var(--border);padding:12px 16px;margin:16px 0;
+  background:var(--light);border-radius:0 8px 8px 0;
+}
+.content blockquote p{margin:0;color:var(--gray);}
+.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+.content th{background:var(--light);padding:10px 14px;text-align:left;font-weight:700;border:1px solid var(--border);}
+.content td{padding:10px 14px;border:1px solid var(--border);}
+
+/* ── CALLOUT BOXES ── */
+.callout{
+  border-radius:8px;padding:14px 18px;margin:18px 0;font-size:14px;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.callout-icon{flex-shrink:0;margin-top:1px;}
+.callout.info{background:#EEF2FF;border:1px solid #C7D3F8;}
+.callout.tip{background:#F0FAF0;border:1px solid #C3E6C3;}
+.callout.warning{background:#FFFBEB;border:1px solid #F5D98A;}
+.callout.danger{background:#FEF2F2;border:1px solid #F8BCBC;}
+.callout p{margin:0;line-height:1.6;}
+
+/* ── PAGE HEADER ── */
+.doc-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.doc-breadcrumb{font-size:12px;color:var(--gray);margin-bottom:8px;}
+.doc-breadcrumb a{color:var(--gray);text-decoration:none;}
+.doc-breadcrumb a:hover{color:var(--ink);}
+.doc-meta{font-size:13px;color:var(--gray);margin-top:8px;}
+
+/* ── NEXT/PREV ── */
+.doc-nav{
+  display:flex;justify-content:space-between;gap:16px;
+  margin-top:56px;padding-top:28px;border-top:1px solid var(--border);
+}
+.doc-nav a{
+  display:flex;flex-direction:column;gap:3px;padding:16px 20px;
+  border:1px solid var(--border);border-radius:8px;text-decoration:none;
+  flex:1;transition:border-color 0.2s;
+}
+.doc-nav a:hover{border-color:var(--ink);}
+.doc-nav .dir{font-size:11px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.07em;}
+.doc-nav .title{font-size:14px;font-weight:600;color:var(--ink);}
+.doc-nav .next{text-align:right;}
+
+/* ── MOBILE ── */
+.menu-toggle{display:none;}
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);transition:transform 0.25s;z-index:150;}
+  .sidebar.open{transform:translateX(0);}
+  .content{margin-left:0;padding:32px 20px 80px;}
+  .menu-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;background:var(--light);border:1px solid var(--border);
+    border-radius:6px;cursor:pointer;flex-shrink:0;
+  }
+  .topnav{gap:10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Menu">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <a href="/" class="logo">
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="9.5" stroke="#1C1C1C" stroke-width="2"/>
+      <circle cx="16" cy="16" r="3.5" fill="#1C1C1C"/>
+      <circle cx="16" cy="1.5" r="1.2" fill="#1C1C1C"/>
+      <circle cx="23.25" cy="3.75" r="1.2" fill="#1C1C1C"/>
+      <circle cx="28.25" cy="9" r="1.2" fill="#1C1C1C"/>
+      <circle cx="30.5" cy="16" r="1.2" fill="#1C1C1C"/>
+      <circle cx="28.25" cy="23" r="1.2" fill="#1C1C1C"/>
+      <circle cx="23.25" cy="28.25" r="1.2" fill="#1C1C1C"/>
+      <circle cx="16" cy="30.5" r="1.2" fill="#1C1C1C"/>
+      <circle cx="8.75" cy="28.25" r="1.2" fill="#1C1C1C"/>
+      <circle cx="3.75" cy="23" r="1.2" fill="#1C1C1C"/>
+      <circle cx="1.5" cy="16" r="1.2" fill="#1C1C1C"/>
+      <circle cx="3.75" cy="9" r="1.2" fill="#1C1C1C"/>
+      <circle cx="8.75" cy="3.75" r="1.2" fill="#1C1C1C"/>
+    </svg>
+    <span>adytus</span>
+  </a>
+  <span class="nav-badge">Docs</span>
+  <div class="topnav-right">
+    <a href="/">Home</a>
+    <a href="demo.html">Demo</a>
+    <a href="waitlist.html" class="topnav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Introduction</div>
+      <a href="#overview" class="active" onclick="setActive(this)">Overview</a>
+      <a href="#how-it-works" onclick="setActive(this)">How it works</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Getting Started</div>
+      <a href="#getting-started" onclick="setActive(this)">Getting started</a>
+      <a href="#add-api-key" onclick="setActive(this)">Add your API key</a>
+      <a href="#encryption" onclick="setActive(this)">Turn on encryption</a>
+      <a href="#pick-model" onclick="setActive(this)">Pick a model &amp; chat</a>
+      <a href="#new-device" onclick="setActive(this)">Use on a new device</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Features</div>
+      <a href="#file-intelligence" onclick="setActive(this)">File uploads</a>
+      <a href="#model-support" onclick="setActive(this)">Supported models</a>
+      <a href="#encryption-detail" onclick="setActive(this)">Encryption deep-dive</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Reference</div>
+      <a href="#faq" onclick="setActive(this)">FAQ</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- OVERVIEW -->
+    <div class="doc-header">
+      <div class="doc-breadcrumb"><a href="/">adytus</a> / Docs</div>
+      <h1 id="overview">adytus Documentation</h1>
+      <p class="doc-meta">Private, encrypted AI workspace — use any model, keep your prompts yours.</p>
+    </div>
+
+    <p>adytus is a private AI workspace that lets you use ChatGPT, Claude, Gemini, and other AI models without leaking company data. Every prompt is encrypted client-side before it leaves your browser. adytus servers never see your plaintext — only you hold the key.</p>
+
+    <div class="callout tip">
+      <span class="callout-icon">✦</span>
+      <p><strong>Private beta:</strong> adytus is currently invite-only. <a href="waitlist.html">Join the waitlist</a> to get early access and 90% off your first year.</p>
+    </div>
+
+    <h2 id="how-it-works">How it works</h2>
+    <p>adytus sits between you and your AI provider. Here's the flow:</p>
+    <ol>
+      <li><strong>You type a prompt</strong> — plain text, only inside your browser tab.</li>
+      <li><strong>adytus encrypts it</strong> — AES-256 encryption happens in the browser using your personal key before anything is sent anywhere.</li>
+      <li><strong>Encrypted prompt is relayed</strong> — your API key sends the encrypted prompt to your chosen AI provider (OpenAI, Anthropic, Google, etc.).</li>
+      <li><strong>Response comes back encrypted</strong> — adytus decrypts it locally in your browser so you can read it. Nothing readable ever touches our servers.</li>
+    </ol>
+
+    <div class="callout info">
+      <span class="callout-icon">ℹ</span>
+      <p><strong>Zero-knowledge architecture:</strong> adytus stores only ciphertext. Even if our servers were compromised, there is nothing readable to expose.</p>
+    </div>
+
+    <!-- GETTING STARTED -->
+    <h2 id="getting-started">Getting started</h2>
+    <p>Setup takes under two minutes. There's no software to install — adytus runs entirely in your browser.</p>
+
+    <h3 id="add-api-key">Step 1 — Add your API key</h3>
+    <p>adytus uses <strong>your own API key</strong> from your chosen AI provider. This means:</p>
+    <ul>
+      <li>You're billed directly by the provider at their standard rates</li>
+      <li>adytus never pools or shares credentials</li>
+      <li>Your key is stored locally in your browser — never on our servers</li>
+    </ul>
+    <p>To add a key, go to <strong>Settings → API Keys</strong> and paste your key from one of the supported providers:</p>
+    <table>
+      <thead><tr><th>Provider</th><th>Where to get your key</th></tr></thead>
+      <tbody>
+        <tr><td>OpenAI (GPT-4o, o1…)</td><td>platform.openai.com → API Keys</td></tr>
+        <tr><td>Anthropic (Claude 3.5…)</td><td>console.anthropic.com → API Keys</td></tr>
+        <tr><td>Google (Gemini 1.5…)</td><td>aistudio.google.com → Get API key</td></tr>
+        <tr><td>xAI (Grok)</td><td>console.x.ai → API Keys</td></tr>
+        <tr><td>OpenRouter</td><td>openrouter.ai → Keys</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warning">
+      <span class="callout-icon">⚠</span>
+      <p>Keep your API key private. Anyone with your key can make requests billed to your account. adytus stores it encrypted in your browser's local storage and never transmits it to our servers.</p>
+    </div>
+
+    <h3 id="encryption">Step 2 — Turn on encryption</h3>
+    <p>Go to <strong>Settings → Privacy</strong> and toggle <strong>Encrypt prompts</strong> on.</p>
+    <p>When you enable encryption for the first time, adytus generates a unique AES-256 encryption key for you and prompts you to download it as <code>adytus-key.json</code>.</p>
+    <div class="callout danger">
+      <span class="callout-icon">⚠</span>
+      <p><strong>Save your key file.</strong> If you lose <code>adytus-key.json</code>, your encrypted conversation history cannot be recovered — not by you, not by adytus. Store it somewhere safe (password manager, encrypted drive).</p>
+    </div>
+    <p>Once encryption is on, the <strong>Encrypted</strong> badge appears in every chat session, confirming your prompts are protected.</p>
+
+    <h3 id="pick-model">Step 3 — Pick a model and start chatting</h3>
+    <p>Use the model selector in the chat toolbar to choose your AI. The list is populated from the API keys you've added.</p>
+    <p>Chat normally — adytus handles encryption and routing transparently. Your conversation history is stored encrypted in our database, readable only by you.</p>
+
+    <h3 id="new-device">Step 4 — Unlock on a new device</h3>
+    <p>When you log into adytus on a new browser or device, your conversation history will appear locked. To unlock it:</p>
+    <ol>
+      <li>Go to <strong>Settings → Privacy</strong></li>
+      <li>Click <strong>Load encryption key</strong></li>
+      <li>Upload your <code>adytus-key.json</code> file</li>
+    </ol>
+    <p>Your full history is immediately accessible. The key file is loaded into memory only — it's never re-uploaded to our servers.</p>
+
+    <!-- FILE INTELLIGENCE -->
+    <h2 id="file-intelligence">File uploads</h2>
+    <p>adytus supports uploading files directly into your chat context. Supported formats:</p>
+    <ul>
+      <li><strong>PDF</strong> — full text extraction with page awareness</li>
+      <li><strong>Word documents</strong> (.docx) — paragraphs, tables, headings preserved</li>
+      <li><strong>Plain text</strong> (.txt, .md, .csv) — sent as-is</li>
+    </ul>
+    <p>Drag and drop a file into the chat window, or click the attachment icon in the input bar. File contents are included in the prompt context sent to the AI. Like all prompts, file contents are encrypted before leaving your browser.</p>
+    <div class="callout info">
+      <span class="callout-icon">ℹ</span>
+      <p>Large files are automatically chunked to fit within the model's context window. adytus uses the provider's token limits to determine chunk size.</p>
+    </div>
+
+    <!-- MODEL SUPPORT -->
+    <h2 id="model-support">Supported models</h2>
+    <p>adytus connects to any provider that exposes an OpenAI-compatible API. Out of the box:</p>
+    <table>
+      <thead><tr><th>Provider</th><th>Models</th></tr></thead>
+      <tbody>
+        <tr><td>OpenAI</td><td>GPT-4o, GPT-4o mini, o1, o1-mini, o3-mini</td></tr>
+        <tr><td>Anthropic</td><td>Claude 3.5 Sonnet, Claude 3 Opus, Claude 3 Haiku</td></tr>
+        <tr><td>Google</td><td>Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini 2.0 Flash</td></tr>
+        <tr><td>xAI</td><td>Grok 2, Grok 2 mini</td></tr>
+        <tr><td>OpenRouter</td><td>Any model available on OpenRouter</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ENCRYPTION DEEP DIVE -->
+    <h2 id="encryption-detail">Encryption deep-dive</h2>
+    <p>adytus uses <strong>AES-256-GCM</strong> symmetric encryption, implemented via the browser's native <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API" target="_blank">Web Crypto API</a>. No third-party crypto libraries are loaded.</p>
+    <p>The encryption flow per message:</p>
+    <ol>
+      <li>A random 96-bit IV (initialization vector) is generated for each message</li>
+      <li>The plaintext prompt is encrypted with your AES-256 key + IV</li>
+      <li>The IV is prepended to the ciphertext and stored alongside it</li>
+      <li>The AI provider receives the encrypted payload via your API key</li>
+      <li>The response is encrypted the same way before being stored</li>
+    </ol>
+    <p>Your <code>adytus-key.json</code> file contains the raw key material exported from the Web Crypto API. It is never transmitted to adytus servers.</p>
+
+    <!-- FAQ -->
+    <h2 id="faq">FAQ</h2>
+    <h3>Can adytus read my prompts?</h3>
+    <p>No. With encryption enabled, adytus stores only ciphertext. We have no copy of your key and no technical ability to decrypt your conversations.</p>
+
+    <h3>What happens if I lose my key file?</h3>
+    <p>Your encrypted history becomes permanently inaccessible. We cannot recover it. This is intentional — it's the property that makes the zero-knowledge guarantee meaningful. Keep a backup in your password manager.</p>
+
+    <h3>Is my API key safe?</h3>
+    <p>Your API key is stored in your browser's local storage, encrypted with the same key you control. It is never sent to adytus servers. It goes only to the AI provider when you send a message.</p>
+
+    <h3>Do you store conversation history?</h3>
+    <p>We store encrypted conversation history so your chats are available across devices and sessions. The stored data is ciphertext only — readable only with your key.</p>
+
+    <h3>Which plan includes encryption?</h3>
+    <p>Encryption is available on all plans, including the free tier during beta.</p>
+
+    <!-- NEXT/PREV NAV -->
+    <div class="doc-nav">
+      <a href="demo.html">
+        <span class="dir">← Interactive</span>
+        <span class="title">See it in action</span>
+      </a>
+      <a href="waitlist.html" class="next">
+        <span class="dir">Get access →</span>
+        <span class="title">Join the waitlist</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function setActive(el){
+  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+  // close sidebar on mobile after click
+  if(window.innerWidth<=768) document.getElementById('sidebar').classList.remove('open');
+}
+
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Highlight sidebar link on scroll
+const sections = document.querySelectorAll('[id]');
+const links = document.querySelectorAll('.sidebar a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 100) current=s.id;
+  });
+  links.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+current);
+  });
+},{passive:true});
+</script>
+</body>
+</html>
