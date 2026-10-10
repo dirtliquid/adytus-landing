@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#1C1C1C"/>
+  <!-- outer ring -->
+  <circle cx="16" cy="16" r="8" stroke="white" stroke-width="1.8" fill="none"/>
+  <!-- inner dot -->
+  <circle cx="16" cy="16" r="2.8" fill="white"/>
+  <!-- 12 dots at 30° intervals, radius 12.5 -->
+  <circle cx="16"    cy="3.5"   r="1" fill="white"/>
+  <circle cx="22.25" cy="5.25"  r="1" fill="white"/>
+  <circle cx="26.75" cy="10"    r="1" fill="white"/>
+  <circle cx="28.5"  cy="16"    r="1" fill="white"/>
+  <circle cx="26.75" cy="22"    r="1" fill="white"/>
+  <circle cx="22.25" cy="26.75" r="1" fill="white"/>
+  <circle cx="16"    cy="28.5"  r="1" fill="white"/>
+  <circle cx="9.75"  cy="26.75" r="1" fill="white"/>
+  <circle cx="5.25"  cy="22"    r="1" fill="white"/>
+  <circle cx="3.5"   cy="16"    r="1" fill="white"/>
+  <circle cx="5.25"  cy="10"    r="1" fill="white"/>
+  <circle cx="9.75"  cy="5.25"  r="1" fill="white"/>
+</svg>
