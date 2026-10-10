@@ -79,6 +79,18 @@ h1 em{font-style:italic;font-weight:300;color:var(--gray);}
 }
 .btn-ghost:hover{border-color:var(--gray);}
 
+/* DEMO EMBED */
+.demo-embed-section{padding:0 48px 64px;border-top:1px solid var(--border);}
+.demo-embed-inner{max-width:900px;margin:0 auto;}
+.demo-embed-frame{
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 48px rgba(0,0,0,0.12),0 1px 0 var(--border);
+  background:#111;aspect-ratio:16/9;position:relative;
+}
+.demo-embed-frame iframe{
+  width:100%;height:100%;border:none;display:block;
+}
+
 /* AI LOGOS */
 .ai-logos{
   text-align:center;padding:32px 48px 56px;border-top:1px solid var(--border);
@@ -222,6 +234,15 @@ footer a:hover{color:var(--ink);}
   <div class="hero-actions">
     <a href="waitlist.html" class="btn-primary">Join Waitlist →</a>
     <a href="demo.html" class="btn-ghost">See how it works</a>
+  </div>
+</div>
+
+<!-- DEMO EMBED -->
+<div class="demo-embed-section">
+  <div class="demo-embed-inner">
+    <div class="demo-embed-frame">
+      <iframe src="demo-video.html" scrolling="no" title="How adytus works"></iframe>
+    </div>
   </div>
 </div>
 
