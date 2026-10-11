@@ -92,7 +92,21 @@ h1 em{font-style:italic;font-weight:300;color:var(--gray);}
 }
 @media(max-width:620px){
   .demo-embed-section{padding:0 16px 48px;}
-  .demo-embed-frame{aspect-ratio:auto;min-height:520px;}
+  .demo-embed-frame{display:none;}
+  .demo-embed-mobile{display:flex !important;}
+}
+.demo-embed-mobile{
+  display:none;
+  flex-direction:column;align-items:center;
+  background:#111;border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 48px rgba(0,0,0,0.12);
+  padding:40px 24px;text-align:center;gap:16px;
+}
+.demo-embed-mobile p{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.5;}
+.demo-embed-mobile strong{color:#fff;display:block;font-size:20px;font-weight:700;margin-bottom:4px;}
+.demo-mobile-btn{
+  background:#fff;color:#1C1C1C;padding:13px 28px;border-radius:8px;
+  font-size:14px;font-weight:700;text-decoration:none;font-family:'Figtree',sans-serif;
 }
 
 /* AI LOGOS */
@@ -247,6 +261,13 @@ footer a:hover{color:var(--ink);}
   <div class="demo-embed-inner">
     <div class="demo-embed-frame">
       <iframe src="demo-video.html" scrolling="no" title="How adytus works"></iframe>
+    </div>
+    <div class="demo-embed-mobile">
+      <div>
+        <strong>See how adytus works</strong>
+        <p>4-step walkthrough — from API key to fully private AI chat.</p>
+      </div>
+      <a href="demo-video.html" class="demo-mobile-btn">Watch Demo →</a>
     </div>
   </div>
 </div>
